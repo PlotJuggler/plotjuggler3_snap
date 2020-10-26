@@ -1,3 +1,3 @@
+- git: {local-name: plotjuggler_ros, uri: 'https://github.com/PlotJuggler/plotjuggler-ros-plugins.git', version: development}
 - git: {local-name: plotjuggler, uri: 'https://github.com/PlotJuggler/PlotJuggler3.git', version: version_3}
 - git: {local-name: plotjuggler_msgs, uri: 'https://github.com/facontidavide/plotjuggler_msgs.git', version: ros1}
-- git: {local-name: plotjuggler_ros, uri: 'https://github.com/PlotJuggler/plotjuggler-ros-plugins.git', version: development}

@@ -12,7 +12,7 @@ base: core18
 apps:
   plotjuggler:
     command: opt/ros/melodic/lib/plotjuggler/PlotJuggler
-    plugs: [network, network-bind, network-manager-observe, opengl, home]
+    plugs: [network, network-bind, network-manager-observe, opengl, home, removable-media, desktop, desktop-legacy]
     extensions: [kde-neon]
 
 parts:
