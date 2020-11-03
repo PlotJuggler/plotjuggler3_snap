@@ -1,5 +1,5 @@
 name: plotjuggler3-ros
-version: 3.0.0-beta
+version: 3.0.0-rc
 summary: The time series visualization tool that you deserve.
 description: |
   QT5 based application to display time series in plots,
@@ -10,7 +10,7 @@ confinement: strict
 base: core18
 
 apps:
-  plotjuggler:
+  plotjuggler3-ros:
     command: opt/ros/melodic/lib/plotjuggler/PlotJuggler
     plugs: [network, network-bind, network-manager-observe, opengl, home, removable-media, desktop, desktop-legacy]
     extensions: [kde-neon]
