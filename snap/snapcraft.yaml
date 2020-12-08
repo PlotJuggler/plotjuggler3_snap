@@ -1,10 +1,9 @@
 name: plotjuggler
-version: 3.0.1
+version: 3.0.4
 summary: The time series visualization tool that you deserve.
 description: |
   QT5 based application to display time series in plots,
   using an intuitive "drag and drop" interface.
-
 grade: stable
 confinement: strict
 base: core18
@@ -12,19 +11,61 @@ base: core18
 apps:
   plotjuggler:
     command: opt/ros/melodic/lib/plotjuggler/plotjuggler
-    plugs: [network, network-bind, network-manager-observe, opengl, home, removable-media, desktop, desktop-legacy]
-    extensions: [kde-neon]
-
+    plugs:
+    - desktop
+    - desktop-legacy
+    - wayland
+    - x11
+    - network
+    - network-bind
+    - network-manager-observe
+    - opengl
+    - home
+    - removable-media
+    command-chain:
+    - snap/command-chain/desktop-launch
+    
 parts:
   plotjuggler:
     plugin: catkin
     source: .
-    rosinstall-files: ['snap/local/plotjuggler3.rosinstall']
+    rosinstall-files:
+    - snap/local/plotjuggler3.rosinstall
     include-roscore: false
     build-snaps:
-      - kde-frameworks-5-core18-sdk
-      - kde-frameworks-5-core18
+    - kde-frameworks-5-core18-sdk
+    - kde-frameworks-5-core18
     build-packages:
-      - distro-info-data
-      - libpulse0
+    - distro-info-data
+    - libpulse0
+  kde-neon-extension:
+    build-packages:
+    - g++
+    plugin: make
+    source: $SNAPCRAFT_EXTENSIONS_DIR/desktop
+    source-subdir: kde-neon
 
+plugs:
+  icon-themes:
+    default-provider: gtk-common-themes
+    interface: content
+    target: $SNAP/data-dir/icons
+  kde-frameworks-5-plug:
+    content: kde-frameworks-5-core18-all
+    default-provider: kde-frameworks-5-core18
+    interface: content
+    target: $SNAP/kf5
+  sound-themes:
+    default-provider: gtk-common-themes
+    interface: content
+    target: $SNAP/data-dir/sounds
+
+environment:
+  SNAP_DESKTOP_RUNTIME: $SNAP/kf5
+
+hooks:
+  configure:
+    command-chain:
+    - snap/command-chain/hooks-configure-desktop
+    plugs:
+    - desktop
