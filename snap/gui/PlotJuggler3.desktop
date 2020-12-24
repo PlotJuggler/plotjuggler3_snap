@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=PlotJuggler3
-Exec=plotjuggler3-ros
+Exec=plotjuggler
 Icon=${SNAP}/meta/gui/plotjuggler3.svg
 Comment=Visualize timeseries like a pro
 Terminal=false
